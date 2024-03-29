@@ -17,11 +17,8 @@ RSYNC_PROTECT_TMP_FILES=(--filter "P .*.??????")
 variant_for_slice()
 {
   case "$1" in
-  "CrashReporter.xcframework/tvos-arm64")
+  "CrashReporter.xcframework/ios-arm64_arm64e_armv7_armv7s")
     echo ""
-    ;;
-  "CrashReporter.xcframework/tvos-arm64_x86_64-simulator")
-    echo "simulator"
     ;;
   "CrashReporter.xcframework/ios-arm64_i386_x86_64-simulator")
     echo "simulator"
@@ -32,8 +29,20 @@ variant_for_slice()
   "CrashReporter.xcframework/macos-arm64_x86_64")
     echo ""
     ;;
-  "CrashReporter.xcframework/ios-arm64_arm64e_armv7_armv7s")
+  "CrashReporter.xcframework/tvos-arm64")
     echo ""
+    ;;
+  "CrashReporter.xcframework/tvos-arm64_x86_64-simulator")
+    echo "simulator"
+    ;;
+  "Flurry_iOS_SDK.xcframework/ios-arm64_armv7")
+    echo ""
+    ;;
+  "Flurry_iOS_SDK.xcframework/ios-arm64_i386_x86_64-simulator")
+    echo "simulator"
+    ;;
+  "Flurry_iOS_SDK.xcframework/ios-arm64_x86_64-maccatalyst")
+    echo "maccatalyst"
     ;;
   "Flurry_iOS_SDK.xcframework/tvos-arm64")
     echo ""
@@ -41,19 +50,10 @@ variant_for_slice()
   "Flurry_iOS_SDK.xcframework/tvos-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "Flurry_iOS_SDK.xcframework/watchos-arm64_i386_x86_64-simulator")
-    echo "simulator"
-    ;;
-  "Flurry_iOS_SDK.xcframework/ios-arm64_armv7")
-    echo ""
-    ;;
-  "Flurry_iOS_SDK.xcframework/ios-arm64_x86_64-maccatalyst")
-    echo "maccatalyst"
-    ;;
   "Flurry_iOS_SDK.xcframework/watchos-arm64_32_armv7k")
     echo ""
     ;;
-  "Flurry_iOS_SDK.xcframework/ios-arm64_i386_x86_64-simulator")
+  "Flurry_iOS_SDK.xcframework/watchos-arm64_i386_x86_64-simulator")
     echo "simulator"
     ;;
   esac
@@ -62,11 +62,8 @@ variant_for_slice()
 archs_for_slice()
 {
   case "$1" in
-  "CrashReporter.xcframework/tvos-arm64")
-    echo "arm64"
-    ;;
-  "CrashReporter.xcframework/tvos-arm64_x86_64-simulator")
-    echo "arm64 x86_64"
+  "CrashReporter.xcframework/ios-arm64_arm64e_armv7_armv7s")
+    echo "arm64 arm64e armv7 armv7s"
     ;;
   "CrashReporter.xcframework/ios-arm64_i386_x86_64-simulator")
     echo "arm64 i386 x86_64"
@@ -77,8 +74,20 @@ archs_for_slice()
   "CrashReporter.xcframework/macos-arm64_x86_64")
     echo "arm64 x86_64"
     ;;
-  "CrashReporter.xcframework/ios-arm64_arm64e_armv7_armv7s")
-    echo "arm64 arm64e armv7 armv7s"
+  "CrashReporter.xcframework/tvos-arm64")
+    echo "arm64"
+    ;;
+  "CrashReporter.xcframework/tvos-arm64_x86_64-simulator")
+    echo "arm64 x86_64"
+    ;;
+  "Flurry_iOS_SDK.xcframework/ios-arm64_armv7")
+    echo "arm64 armv7"
+    ;;
+  "Flurry_iOS_SDK.xcframework/ios-arm64_i386_x86_64-simulator")
+    echo "arm64 i386 x86_64"
+    ;;
+  "Flurry_iOS_SDK.xcframework/ios-arm64_x86_64-maccatalyst")
+    echo "arm64 x86_64"
     ;;
   "Flurry_iOS_SDK.xcframework/tvos-arm64")
     echo "arm64"
@@ -86,19 +95,10 @@ archs_for_slice()
   "Flurry_iOS_SDK.xcframework/tvos-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "Flurry_iOS_SDK.xcframework/watchos-arm64_i386_x86_64-simulator")
-    echo "arm64 i386 x86_64"
-    ;;
-  "Flurry_iOS_SDK.xcframework/ios-arm64_armv7")
-    echo "arm64 armv7"
-    ;;
-  "Flurry_iOS_SDK.xcframework/ios-arm64_x86_64-maccatalyst")
-    echo "arm64 x86_64"
-    ;;
   "Flurry_iOS_SDK.xcframework/watchos-arm64_32_armv7k")
     echo "arm64_32 armv7k"
     ;;
-  "Flurry_iOS_SDK.xcframework/ios-arm64_i386_x86_64-simulator")
+  "Flurry_iOS_SDK.xcframework/watchos-arm64_i386_x86_64-simulator")
     echo "arm64 i386 x86_64"
     ;;
   esac
@@ -183,6 +183,6 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/Flurry-iOS-SDK/CrashReporter.xcframework" "Flurry-iOS-SDK/CrashReporter" "framework" "ios-arm64_i386_x86_64-simulator" "ios-arm64_x86_64-maccatalyst" "ios-arm64_arm64e_armv7_armv7s"
-install_xcframework "${PODS_ROOT}/Flurry-iOS-SDK/Flurry_iOS_SDK.xcframework" "Flurry-iOS-SDK/FlurrySDK" "framework" "ios-arm64_armv7" "ios-arm64_x86_64-maccatalyst" "ios-arm64_i386_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/Flurry-iOS-SDK/CrashReporter.xcframework" "Flurry-iOS-SDK/CrashReporter" "framework" "ios-arm64_arm64e_armv7_armv7s" "ios-arm64_i386_x86_64-simulator" "ios-arm64_x86_64-maccatalyst"
+install_xcframework "${PODS_ROOT}/Flurry-iOS-SDK/Flurry_iOS_SDK.xcframework" "Flurry-iOS-SDK/FlurrySDK" "framework" "ios-arm64_armv7" "ios-arm64_i386_x86_64-simulator" "ios-arm64_x86_64-maccatalyst"
 
